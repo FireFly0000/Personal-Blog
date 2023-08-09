@@ -1,1 +1,1 @@
-{"version":3,"file":"users.js","sourceRoot":"","sources":["../../src/routes/users.ts"],"names":[],"mappings":";;;;;AAAA,sDAA6B;AAE7B,MAAM,MAAM,GAAG,iBAAO,CAAC,MAAM,EAAE,CAAA;AAG/B,kBAAe,MAAM,CAAA"}
+{"version":3,"file":"users.js","sourceRoot":"","sources":["../../api/routes/users.ts"],"names":[],"mappings":";;;;;AAAA,sDAA6B;AAE7B,MAAM,MAAM,GAAG,iBAAO,CAAC,MAAM,EAAE,CAAA;AAG/B,kBAAe,MAAM,CAAA"}
