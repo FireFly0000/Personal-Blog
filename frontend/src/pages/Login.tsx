@@ -14,7 +14,7 @@ const Login = () => {
   const [ErrorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate()
 
-  const {currentUser, login, logout} = useAuth()
+  const {login} = useAuth()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -24,7 +24,7 @@ const Login = () => {
     e.preventDefault()
     try{
       await login(inputs)
-      navigate("/")
+      navigate("/home")
     }
     catch(err: any){
       console.log(err)

@@ -10,7 +10,7 @@ const Navbar = () => {
     <div className='nav-bar'>
       <div className='container'>
         <div className='nav-logo'>
-          <Link to="/">
+          <Link to="/home">
             <img className='logo' src={logo}/>
           </Link>  
         </div>
@@ -37,7 +37,7 @@ const Navbar = () => {
             <h6>FOOD</h6>
           </Link>
           <span>{currentUser?.username}</span>
-          <Link className="link" to="/login">
+          <Link className="link" to="/">
             <span className='write-btn' onClick={logout}>Logout</span>
           </Link>
           <span className='write-btn'>

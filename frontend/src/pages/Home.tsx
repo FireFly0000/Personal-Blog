@@ -52,7 +52,7 @@ const Home = () => {
                 <Link className='link' to={`/post/${post.id}`}>
                   <h1>{post.title}</h1>
                 </Link>
-                <div dangerouslySetInnerHTML={{ __html: post.descr as string }}></div>
+                <div dangerouslySetInnerHTML={{ __html: post.descr as string }}></div>  
                 <button onClick={clickHandler(post.id)}>Read More</button>
               </div>
             </div>

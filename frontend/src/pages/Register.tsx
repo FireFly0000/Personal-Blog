@@ -45,7 +45,7 @@ const Register = () => {
               <button disabled={inputs.password != confirmPassword} type='submit'>Register</button>
               {ErrorMessage != "" && <p>{ErrorMessage}</p>}
               {inputs.password !== confirmPassword ? <p>Passwords do not match</p> : <></>}
-              <Link className='link-btn' to='/login'> Already have an account? Login</Link>
+              <Link className='link-btn' to='/'> Already have an account? Login</Link>
             </form>
         </div>
       </div>

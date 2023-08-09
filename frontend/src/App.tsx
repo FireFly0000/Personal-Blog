@@ -9,7 +9,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import axios from 'axios'
 
-axios.defaults.baseURL = `https://personal-blog-backend-deploy.vercel.app/`
+axios.defaults.baseURL = `https://personal-blog-backend-deploy.vercel.app/api`
 const Layout = () =>{
   return(
     <>
@@ -22,11 +22,10 @@ const Layout = () =>{
 
 const router = createBrowserRouter([
   {
-    path: "/",
     element: <Layout/>,
     children: [
       {
-        path:"/",
+        path:"/home",
         element: <Home/>
       },
       {
@@ -44,7 +43,7 @@ const router = createBrowserRouter([
     element: <Register/>
   },
   {
-    path: "/login",
+    path: "/",
     element: <Login/>
   },
 ]);

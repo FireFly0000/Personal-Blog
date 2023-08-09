@@ -26,7 +26,7 @@ const Write = () => {
       const options = {
         method: 'POST',
         data: formData,
-        url: "http://localhost:8800/api/upload"
+        url: "https://personal-blog-backend-deploy.vercel.app/api/upload"
       };
       const res = await axios(options);
       return res.data
@@ -63,7 +63,7 @@ const Write = () => {
         img: imgFile ? imgURL : "",
         date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
       }, {withCredentials: true});
-      navigate("/")
+      navigate("/home")
     }catch(err){
       console.log(err)
     }
