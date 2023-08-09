@@ -4,7 +4,7 @@ Postgres as the database.
 
 UI/Frontend: React, Axios, react-router-dom.
 
-Technologies used: 
+<h1>Technologies used :</h1> 
 <ul>
   <li>JWT authentication</li> 
   <li>Autherization with access token stored in cookie</li> 
