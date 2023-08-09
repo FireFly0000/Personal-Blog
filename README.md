@@ -1,5 +1,5 @@
 # Personal-Blog
-This is a blog posting application written in Node Express, React using TypeScript
+This is a blog posting application written in Node Express, React using TypeScript. </br>
 Postgres as the database.
 
 UI/Frontend: React, Axios, react-router-dom.
