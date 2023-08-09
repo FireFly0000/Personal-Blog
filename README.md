@@ -7,13 +7,15 @@ Technologies used: JWT authentication, autherization with access token stored in
 UI/Frontend: React, Axios, react-router-dom, 
 
 <h1>Main features :</h1>
-- Category Management (CRUD)
-- Post Management (CRUD)
-- User Management (authorization with JWT)
-- Log in
-- Log out
-- Register
-- Display posts based on category
-- Create a post (when the user is autherized)
-- View post details (Suggest posts with the same category)
-- Delete, update a post (when the user is the owner of the post)
+<ul>
+  <li>Category Management (CRUD)</li>
+  <li>Post Management (CRUD)</li>
+  <li>User Management (authorization with JWT)</li>
+  <li>Log in</li>
+  <li>Log out</li>
+  <li>Register</li>
+  <li>Display posts based on category</li>
+  <li>Create a post (when the user is autherized)</li>
+  <li>View post details (Suggest posts with the same category)</li>
+  <li>Delete, update a post (when the user is the owner of the post)</li>
+</ul>
