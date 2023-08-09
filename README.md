@@ -2,9 +2,17 @@
 This is a blog posting application written in Node Express, React using TypeScript
 Postgres as the database.
 
-Technologies used: JWT authentication, autherization with access token stored in cookie, <br/> REST api for CRUD operation, Multer for uploading image file, bccrypt to hash password.
+UI/Frontend: React, Axios, react-router-dom.
 
-UI/Frontend: React, Axios, react-router-dom, 
+Technologies used: 
+<ul>
+  <li>JWT authentication</li> 
+  <li>Autherization with access token stored in cookie</li> 
+  <li>REST api for CRUD operation</li> 
+  <li>Multer for uploading image file</li> 
+  <li>Bccrypt to hash password</li>
+  <li>React context (useContext) to manage current user as a global state</li>
+</ul>
 
 <h1>Main features :</h1>
 <ul>
