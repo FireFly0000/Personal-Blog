@@ -9,7 +9,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import axios from 'axios'
 
-axios.defaults.baseURL = `http://localhost:8800/api`
+axios.defaults.baseURL = `https://personal-blog-backend-deploy.vercel.app/`
 const Layout = () =>{
   return(
     <>
