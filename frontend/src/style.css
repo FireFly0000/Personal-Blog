@@ -1,0 +1,488 @@
+*{
+    margin:0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.image-slider-container{
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.slide-image{
+    width: 1000px;
+    height: 600px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+.slide-container{
+    width: 1000px;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+}
+.slide-container::before{
+    content: "";
+    width: 1000px;
+    height: 600px;
+    background-color: rgba(0,0,0,0.3);
+    position: absolute;
+    border-radius: 10px;
+    z-index: 10;
+}
+.slide-cat{
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    font-size: 40px;
+    font-weight: 400;
+    color: #fff;
+    z-index: 100;
+}
+.slide-left-arrow{
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 2px;
+    font-size: 45px;
+    color: #fff;
+    z-index: 100;
+    cursor: pointer;
+}
+.slide-right-arrow{
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 2px;
+    font-size: 45px;
+    color: #fff;
+    z-index: 100;
+    cursor: pointer;
+}
+.slide-arrow:hover{
+    color: #B8860B;
+}
+
+.slide-dots-container{
+    display: flex;
+    justify-content: center;
+
+}
+.slide-dots{
+    margin: 0 3px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.current-slide-dot{
+    margin: 0 3px;
+    cursor: pointer;
+    font-size: 22px;
+    color: white;
+}
+
+
+.auth-page-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: #B8860B;
+    text-align: center;
+}
+
+.auth-page{
+    flex: 2;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.auth-container{
+    padding: 5rem;
+    border: 3px solid white;
+    border-radius: 10px;
+}
+
+.auth-form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.auth-title{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.auth-page input{
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+}
+
+.auth-page button{
+    border: none;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.auth-page p{
+    text-align: center;
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+.link-btn{
+    background: none;
+    text-decoration: underline;
+}
+
+.container{
+    margin: 0 auto;
+    padding: 0 1.5em;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    align-items: center;
+}
+
+.logo{
+    width: 150px;
+    margin: 15px;
+    border-radius: 50%;
+}
+
+.link{
+    text-decoration: none;
+    color: inherit;
+}
+
+.cat-link{
+    text-decoration: none;
+    color: inherit;
+    border-left: 3px solid #B8860B;
+    padding: 5px;
+}
+
+.cat-link:hover{
+    text-decoration: none;
+    color: #B8860B;
+    border-left: 3px solid #333;
+}
+
+.nav-links-list{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-links-list h6{
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.nav-links-list span{
+    cursor: pointer;
+}
+
+.nav-links-list .write-btn{
+    background-color:   #B8860B;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 300;
+    border: 1px solid white;
+    object-fit: cover;
+}
+
+.nav-links-list .write-btn:hover{
+    background-color: white;
+    border: 1px solid #B8860B;
+}
+
+footer{
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #B8860B;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0;
+}
+
+footer span{
+    color: white;
+}
+
+.home-page .posts{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 150px;
+}
+
+.home-page .posts .post{
+    display: flex;
+    gap: 100px;
+}
+
+.home-page .posts .post:nth-child(2n+1){
+    flex-direction: row-reverse;
+}
+
+.home-page .posts .post .img-container{
+    flex: 2;
+    position: relative;
+}
+
+.home-page .posts .post .img-container::after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #B8860B;
+    position: absolute;
+    top: 20px;
+    left: -20px;
+    z-index: -1;
+}
+
+.home-page .posts .post .img-container img{
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.home-page .posts .post .content{
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.home-page .posts .post .content h1{
+    font-size: 48px;
+}
+
+.home-page .posts .post .content p{
+    font-size: 18px;
+}
+
+.home-page .posts .post .content button{
+    width: max-content;
+    padding: 10px 20px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    border: 1px solid #B8860B;
+    color: #B8860B;
+}
+
+.home-page .posts .post .content button:hover{
+    border: 1px solid white;
+    background-color: #B8860B;
+    color: white;
+}
+
+.single-page{
+    display: flex;
+    gap: 50px;
+}
+
+.single-page .content{
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.single-page .content .post-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.single-page .content .user{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+.single-page .content .user span{
+    font-weight: bold;
+}
+
+.single-page .content .user .btn-modify{
+    display: flex;
+    gap: 5px;
+}
+
+.single-page .content .user .btn-modify img{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.single-page .content .user img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.single-page .content h1{
+    font-size: 42px;
+    color: #333;
+}
+
+.single-page .content p{
+    text-align: justify;
+    line-height: 30px;
+}
+
+.single-page .menu{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.single-page .menu h1{
+    font-size: 20px;
+    color: #555;
+    border-bottom: solid #B8860B;
+}
+
+.single-page .menu .post{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.single-page .menu .post img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.single-page .menu .post h2{
+    color: #555;
+}
+
+.single-page .menu .post button{
+    width: max-content;
+    padding: 10px 20px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    border: 1px solid #B8860B;
+    color: #B8860B;
+}
+
+.single-page .menu .post button:hover{
+    border: 1px solid white;
+    background-color: #B8860B;
+    color: white;
+}
+
+.write-page{
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.write-page .content{
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.write-page .content input{
+    padding: 10px;
+    border: 1px solid lightgray;
+}
+
+.write-page .content .editor-container{
+    height: 300px;
+    overflow: scroll;
+    max-width: 800px;
+    width: 800px;
+    border: 1px solid lightgray;
+}
+
+.write-page .content .editor-container .editor{
+    height: 100%;
+    border: none;
+}
+
+.write-page .menu{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.write-page .menu .write-menu-item{
+    border: 1px solid lightgray;
+    padding: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #555;
+}
+
+.write-page .menu .write-menu-item h1{
+    font-size: 20px;
+}
+
+.write-page .menu .write-menu-item .upload-img-label{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.write-page .menu .write-menu-item .write-page-btns{
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.write-page .menu .write-menu-item .write-page-btns .save-btn{
+    cursor: pointer;
+    color: #B8860B;
+    background-color: white;
+    border: 1px solid #B8860B;
+    padding: 3px 5px;
+}
+
+.write-page .menu .write-menu-item .write-page-btns .update-btn{
+    cursor: pointer;
+    color: white;
+    background-color: #B8860B;
+    border: 1px solid #B8860B;
+    padding: 3px 5px;
+}
+
+.write-page .menu .write-menu-item .cat{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    color: #B8860B;
+}
