@@ -14,7 +14,7 @@ app.use(cookieParser())
 app.use(
     cors({
         credentials: true,
-        origin: "https://personal-blog-frontend-deploy.vercel.app/",
+        origin: "https://personal-blog-frontend-deploy.vercel.app"
     })
 );
 app.use(express.json())
