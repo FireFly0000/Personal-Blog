@@ -14,7 +14,7 @@ app.use(cookieParser())
 app.use(
     cors({
         credentials: true,
-        origin: "https://personal-blog-frontend-deploy.vercel.app"
+        origin: "http://localhost:5173"
     })
 );
 app.use(express.json())
@@ -22,7 +22,7 @@ app.use(express.json())
 //Upload image to frontend server using multer
 const storage = multer.diskStorage({
     destination: function (req, file, cb){
-        cb(null, '../frontend/src/assets/uploads')
+        cb(null, 'D:/Downloads/personal-blog/backend/api/upload/')
     },
     filename: function(req, file, cb){
         cb(null, Date.now() + file.originalname)

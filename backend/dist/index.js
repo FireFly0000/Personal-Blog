@@ -15,13 +15,13 @@ const port = process.env.PORT || 8800;
 app.use((0, cookie_parser_1.default)());
 app.use((0, cors_1.default)({
     credentials: true,
-    origin: "https://personal-blog-frontend-deploy.vercel.app"
+    origin: "http://localhost:5173"
 }));
 app.use(express_1.default.json());
 //Upload image to frontend server using multer
 const storage = multer_1.default.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '../frontend/src/assets/uploads');
+        cb(null, 'D:/Downloads/personal-blog/backend/api/upload/');
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + file.originalname);
