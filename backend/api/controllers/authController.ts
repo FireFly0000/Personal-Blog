@@ -38,10 +38,11 @@ export const login = async (req,res)=>{
         const token = jwt.sign({id: data.rows[0].id}, "OmegaXL_Night_2023");
         
         //SEPARATE PASSWORD AND OTHER USER'S INFORMATION
-        const {password, ...other} = data.rows[0]
+        const password = data.rows[0]
         if(password === null) console.log("NULL PASSWORD")  
 
-        return res.cookie("access_token", token, {httpOnly: true}).status(200).json(other)        
+        return res.cookie("access_token", token, {sameSite : "none", secure: true,
+        domain: "personal-blog-frontend-deploy.vercel.app", httpOnly: true}).status(200).json(res)        
     })    
 }
 
