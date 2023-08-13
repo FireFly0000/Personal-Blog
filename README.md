@@ -12,6 +12,8 @@ UI/Frontend: React, Axios, react-router-dom.
   <li>Multer for uploading image file</li> 
   <li>Bccrypt to hash password</li>
   <li>React context (useContext) to manage current user as a global state</li>
+  <li>Used Multer to upload images to local folder</li>
+  <li>Use multer-storage-cloudinary to store images in Cloudinary upon deployment</li>
 </ul>
 
 <h1>Main features :</h1>
