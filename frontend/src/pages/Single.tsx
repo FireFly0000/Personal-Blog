@@ -1,5 +1,4 @@
 import React, { ReactNode, useEffect, useState } from 'react'
-import Edit from '../assets/edit.png'
 import Delete from '../assets/delete.png'
 import {Link, useLocation, useNavigate} from 'react-router-dom'
 import Menu from '../components/Menu'
@@ -25,7 +24,7 @@ const Single = () => {
   const location = useLocation()
   const navigate = useNavigate()
 
-  const {currentUser} = useAuth()
+  const {currentUser, access_token} = useAuth()
 
   const postId = location.pathname.split("/")[2]
 
@@ -44,8 +43,8 @@ const Single = () => {
 
   const deleteHandler = async () =>{
     try{
-      const res = await axios.delete(`/posts/${postId}`, {withCredentials: true})
-      navigate("/")
+      const res = await axios.post(`/posts/delete/${postId}`, {access_token: access_token}, {withCredentials: true})
+      navigate("/home")
     }
     catch(err){
       console.log(err)
@@ -56,8 +55,7 @@ const Single = () => {
     <div className='container'> 
       <div className='single-page'>
         <div className="content">
-          <base href="http://localhost:5173/"/>
-            <img className='post-img' src={`src/assets/uploads/${post?.img}`}/>
+          <img className='post-img' src={post?.img}/>
           <div className="user">
             {post?.userImg && <img src={post?.userImg}/>}
             <div className="info">
@@ -68,7 +66,7 @@ const Single = () => {
             currentUser.username === post?.username && 
               <div className="btn-modify">
                 <Link to={`/write?edit=2`} state={post}>
-                  <img src={Edit} alt=''/>
+                  <img src={'https://res.cloudinary.com/dkv4gihl5/image/upload/v1691772181/edit_hpith0.png'} alt=''/>
                 </Link>  
                 <img onClick={deleteHandler} src={Delete} alt=''/>
               </div>

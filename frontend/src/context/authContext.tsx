@@ -10,12 +10,14 @@ interface Inputs{
 
 type authContextType = {
   currentUser: any;
+  access_token: string | null
   login: (inputs: Inputs) => void;
   logout: () => void;
 };
 
 const authContextDefaultValues: authContextType = {
   currentUser: null,
+  access_token: null,
   login: (inputs: Inputs) => {},
   logout: () => {},
 };
@@ -33,25 +35,29 @@ export function useAuth() {
 
 export const AuthContextProvider = ({ children}: Props) => {
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("user") || '{}'));
+    const [access_token, setAccessToken] = useState(localStorage.getItem("access_token") || '')
 
     const login = async(inputs: Inputs)=>{
         const res = await axios.post("auth/login", inputs, { withCredentials: true })
-        setCurrentUser(res.data)
+        setCurrentUser(res.data.other)
+        setAccessToken(res.data.access_token)
     }
 
     const logout = async()=>{
         axios.get("auth/logout", { withCredentials: true})
         await setCurrentUser(null)
+        await localStorage.setItem("access_token", '')
     }
 
     useEffect(() =>{
         localStorage.setItem("user", JSON.stringify(currentUser))
+        localStorage.setItem("access_token", access_token)
         let slide_index = 0
         localStorage.setItem('slide_index', slide_index.toString())
     },[currentUser]);
 
 
     return(
-        <AuthContext.Provider value={{currentUser,login, logout}}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{currentUser, access_token, login, logout}}>{children}</AuthContext.Provider>
     )
 }

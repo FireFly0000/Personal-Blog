@@ -22,7 +22,7 @@ export const getPost = async (req,res)=>{
 }
 
 export const addPost = (req,res)=>{
-    const token = req.cookies.access_token
+    const token = req.body.access_token
     if(!token) return res.status(401).json("NOT AUTHENTICATED!")
 
     jwt.verify(token, "OmegaXL_Night_2023", async (err, userInfo) =>{
@@ -40,7 +40,7 @@ export const addPost = (req,res)=>{
         ]
 
         await db.query(query, values, (err, data) =>{
-            if(err) return res.status(403).json("You have to be the owner of the post to delete")
+            if(err) return res.status(500).json(err)
         
             return res.status(200).json(data)
         })
@@ -48,7 +48,7 @@ export const addPost = (req,res)=>{
 }
 
 export const deletePost = (req,res)=>{
-    const token = req.cookies.access_token
+    const token = req.body.access_token
     if(!token) return res.status(401).json("NOT AUTHENTICATED!")
 
     jwt.verify(token, "OmegaXL_Night_2023", async (err, userInfo) =>{
@@ -60,13 +60,13 @@ export const deletePost = (req,res)=>{
         await db.query(query, [postId, userInfo.id], (err) =>{
             if(err) return res.status(500).json(err)
         
-            return res.status(200).json("New post added successfully!")
+            return res.status(200).json("New post deleted successfully!")
         })
     })
 }
 
 export const updatePost = (req,res)=>{
-    const token = req.cookies.access_token
+    const token = req.body.access_token
     if(!token) return res.status(401).json("NOT AUTHENTICATED!")
 
     jwt.verify(token, "OmegaXL_Night_2023", async (err, userInfo) =>{

@@ -36,7 +36,7 @@ const getPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.getPost = getPost;
 const addPost = (req, res) => {
-    const token = req.cookies.access_token;
+    const token = req.body.access_token;
     if (!token)
         return res.status(401).json("NOT AUTHENTICATED!");
     jsonwebtoken_1.default.verify(token, "OmegaXL_Night_2023", (err, userInfo) => __awaiter(void 0, void 0, void 0, function* () {
@@ -53,14 +53,14 @@ const addPost = (req, res) => {
         ];
         yield db_1.db.query(query, values, (err, data) => {
             if (err)
-                return res.status(403).json("You have to be the owner of the post to delete");
+                return res.status(500).json(err);
             return res.status(200).json(data);
         });
     }));
 };
 exports.addPost = addPost;
 const deletePost = (req, res) => {
-    const token = req.cookies.access_token;
+    const token = req.body.access_token;
     if (!token)
         return res.status(401).json("NOT AUTHENTICATED!");
     jsonwebtoken_1.default.verify(token, "OmegaXL_Night_2023", (err, userInfo) => __awaiter(void 0, void 0, void 0, function* () {
@@ -71,13 +71,13 @@ const deletePost = (req, res) => {
         yield db_1.db.query(query, [postId, userInfo.id], (err) => {
             if (err)
                 return res.status(500).json(err);
-            return res.status(200).json("New post added successfully!");
+            return res.status(200).json("New post deleted successfully!");
         });
     }));
 };
 exports.deletePost = deletePost;
 const updatePost = (req, res) => {
-    const token = req.cookies.access_token;
+    const token = req.body.access_token;
     if (!token)
         return res.status(401).json("NOT AUTHENTICATED!");
     jsonwebtoken_1.default.verify(token, "OmegaXL_Night_2023", (err, userInfo) => __awaiter(void 0, void 0, void 0, function* () {

@@ -50,7 +50,7 @@ const Menu = ({cat, single_post_id} :Props) => {
           { post.id === single_post_id 
              ? <></>  
             :<>
-              <img src={`src/assets/uploads/${post.img}`} alt=""/>
+              <img src={post.img} alt=""/>
               <Link className='link' to={`/post/${post.id}`}>
                 <h2>{post.title}</h2>
               </Link>  
