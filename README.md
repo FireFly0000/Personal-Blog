@@ -2,16 +2,24 @@
 This is a blog posting application written in Node Express, React using TypeScript. </br>
 Postgres as the database.
 
-UI/Frontend: React, Axios, react-router-dom.
+UI/Frontend: React, Axios, react-router-dom. </br>
+</br>
+Register to see the app or use the below test account:
+<li><b>Username: </b> test_user1</li>
+<li><b>Password: </b> password1</li>
+</br>
+<a href="https://personal-blog-frontend-deploy.vercel.app/">App deployed with vercel</a>
 
 <h1>Technologies used :</h1> 
 <ul>
   <li>JWT authentication</li> 
-  <li>Autherization with access token stored in cookie</li> 
+  <li>Authorization with access token stored in cookie</li> 
   <li>REST api for CRUD operation</li> 
   <li>Multer for uploading image file</li> 
   <li>Bccrypt to hash password</li>
   <li>React context (useContext) to manage current user as a global state</li>
+  <li>Used Multer to upload images to local folder</li>
+  <li>Use multer-storage-cloudinary to store images in Cloudinary upon deployment</li>
 </ul>
 
 <h1>Main features :</h1>
