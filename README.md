@@ -7,7 +7,7 @@ UI/Frontend: React, Axios, react-router-dom.
 <h1>Technologies used :</h1> 
 <ul>
   <li>JWT authentication</li> 
-  <li>Autherization with access token stored in cookie</li> 
+  <li>Authorization with access token stored in cookie</li> 
   <li>REST api for CRUD operation</li> 
   <li>Multer for uploading image file</li> 
   <li>Bccrypt to hash password</li>
