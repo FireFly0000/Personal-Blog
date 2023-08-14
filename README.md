@@ -7,6 +7,8 @@ UI/Frontend: React, Axios, react-router-dom. </br>
 Register to see the app or use the below test account:
 <li><b>Username: </b> test_user1</li>
 <li><b>Password: </b> password1</li>
+</br>
+<a href="https://personal-blog-frontend-deploy.vercel.app/">App deployed with vercel</a>
 
 <h1>Technologies used :</h1> 
 <ul>
