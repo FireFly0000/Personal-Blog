@@ -3,6 +3,7 @@ This is a blog posting application written in Node Express, React using TypeScri
 Postgres as the database.
 
 UI/Frontend: React, Axios, react-router-dom. </br>
+</br>
 Register to see the app or use the below test account:
 <li><b>Username: </b> test_user1</li>
 <li><b>Password: </b> password1</li>
