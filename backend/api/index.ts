@@ -60,17 +60,19 @@ const storage = CloudinaryStorage({
 
 const upload = multer({storage})
 
-//======================================================
+
 app.post('/api/upload', upload.any(), (req, res) =>{
     res.json(req.files[0].path)
-    /*cloudinary.uploader.upload( `${req['filename']}`, function(err, data){
-        if(err){
-            res.status(400).json(err)
-        }
-        res.status(200).json(data)
-    })*/
 })
-//====================================================
+
+app.post('/api/deleteImg', upload.fields([]), (req, res) =>{
+    
+    res.json(
+        cloudinary.api.delete_resources([`upload/${req.body.img_name}`], 
+        { type: 'upload', resource_type: 'image' })
+    )
+    
+})
 
 app.use("/api/auth", authRoutes)
 app.use("/api/users", userRoutes)

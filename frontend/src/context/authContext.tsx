@@ -13,6 +13,7 @@ type authContextType = {
   access_token: string | null
   login: (inputs: Inputs) => void;
   logout: () => void;
+  fetchCurrentUserInfo: () => void;
 };
 
 const authContextDefaultValues: authContextType = {
@@ -20,6 +21,7 @@ const authContextDefaultValues: authContextType = {
   access_token: null,
   login: (inputs: Inputs) => {},
   logout: () => {},
+  fetchCurrentUserInfo: () => {}
 };
 
 interface Props {
@@ -49,6 +51,12 @@ export const AuthContextProvider = ({ children}: Props) => {
         await localStorage.setItem("access_token", '')
     }
 
+    const fetchCurrentUserInfo = async()=>{
+        const res = await axios.get(`auth/fetchCurrentUserInfo/${access_token}`)
+        console.log(res.data.user)
+        await setCurrentUser(res.data.user)
+    }
+
     useEffect(() =>{
         localStorage.setItem("user", JSON.stringify(currentUser))
         localStorage.setItem("access_token", access_token)
@@ -58,6 +66,6 @@ export const AuthContextProvider = ({ children}: Props) => {
 
 
     return(
-        <AuthContext.Provider value={{currentUser, access_token, login, logout}}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{currentUser, access_token, login, logout, fetchCurrentUserInfo}}>{children}</AuthContext.Provider>
     )
 }

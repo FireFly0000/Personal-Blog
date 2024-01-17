@@ -1,11 +1,12 @@
-import React, { ReactNode, useEffect, useState } from 'react'
+import {useEffect, useState } from 'react'
 import Delete from '../assets/delete.png'
 import {Link, useLocation, useNavigate} from 'react-router-dom'
 import Menu from '../components/Menu'
 import axios from 'axios'
 import { useAuth } from '../context/authContext'
 import moment from 'moment'
-import $ from 'jquery'
+import EmptyAvatar from '../assets/empty_avatar.jpg'
+import ImgDelete from '../components/ImgDelete'
 
 interface Post{
   id: number
@@ -16,7 +17,7 @@ interface Post{
   uid: number
   cat: string
   username: string
-  userImg: string
+  userimg: string
 }
 
 const Single = () => {
@@ -29,7 +30,7 @@ const Single = () => {
   const postId = location.pathname.split("/")[2]
 
   useEffect(() =>{
-    const fetchPosts = async () =>{
+    const fetchPost = async () =>{
       try{
         const res = await axios.get(`/posts/${postId}`)
         await setPost(res.data)
@@ -38,13 +39,14 @@ const Single = () => {
         console.log(err)
       }
     }
-    fetchPosts()
+    fetchPost()
   }, [postId]);
 
   const deleteHandler = async () =>{
     try{
+      await ImgDelete(post?.img)
       const res = await axios.post(`/posts/delete/${postId}`, {access_token: access_token}, {withCredentials: true})
-      navigate("/home")
+      navigate("/")
     }
     catch(err){
       console.log(err)
@@ -57,15 +59,19 @@ const Single = () => {
         <div className="content">
           <img className='post-img' src={post?.img}/>
           <div className="user">
-            {post?.userImg && <img src={post?.userImg}/>}
+            <Link className="link" to={`/profile/${post?.uid}`}>
+            <img src={post?.userimg === null ? EmptyAvatar : post?.userimg}/>
+            </Link>
             <div className="info">
+            <Link className="link" to={`/profile/${post?.uid}/${post?.username}`}>  
               <span>{post?.username}</span>
+            </Link>
               <p>{moment(post?.date).fromNow()}</p>
             </div>
             {
-            currentUser.username === post?.username && 
+            currentUser != null && currentUser.username === post?.username && 
               <div className="btn-modify">
-                <Link to={`/write?edit=2`} state={post}>
+                <Link to={`/write`} state={post}>
                   <img src={'https://res.cloudinary.com/dkv4gihl5/image/upload/v1691772181/edit_hpith0.png'} alt=''/>
                 </Link>  
                 <img onClick={deleteHandler} src={Delete} alt=''/>

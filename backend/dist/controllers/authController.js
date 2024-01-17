@@ -23,7 +23,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.logout = exports.login = exports.register = void 0;
+exports.logout = exports.fetchCurrentUserInfo = exports.login = exports.register = void 0;
 const db_1 = require("../db");
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
@@ -68,6 +68,27 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }));
 });
 exports.login = login;
+const fetchCurrentUserInfo = (req, res) => {
+    const token = req.params.access_token;
+    if (!token)
+        return res.status(401).json("NOT AUTHENTICATED!");
+    jsonwebtoken_1.default.verify(token, "OmegaXL_Night_2023", (err, userInfo) => __awaiter(void 0, void 0, void 0, function* () {
+        if (err)
+            return res.status(403).json("Token is not valid!");
+        const query = "SELECT id, username, email, img  FROM users WHERE id=$1";
+        yield db_1.db.query(query, [userInfo.id], (err, data) => {
+            if (err)
+                return res.json(err);
+            if (data.rowCount === 0) {
+                console.log(userInfo, req.params);
+                return res.status(404).json("User does not exist !");
+            }
+            const user = data.rows[0];
+            return res.status(200).json({ user });
+        });
+    }));
+};
+exports.fetchCurrentUserInfo = fetchCurrentUserInfo;
 const logout = (req, res) => {
     res.clearCookie("access_token", {
         sameSite: "none",

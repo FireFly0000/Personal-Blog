@@ -46,6 +46,28 @@ export const login = async (req,res)=>{
     })    
 }
 
+export const fetchCurrentUserInfo = (req,res)=>{
+    const token = req.params.access_token
+    if(!token) return res.status(401).json("NOT AUTHENTICATED!")
+
+    jwt.verify(token, "OmegaXL_Night_2023", async (err, userInfo) =>{
+        if(err) return res.status(403).json("Token is not valid!")
+        
+        const query = "SELECT id, username, email, img  FROM users WHERE id=$1";
+
+        await db.query(query, [userInfo.id], (err, data) =>{
+            if(err) return res.json(err)
+            if(data.rowCount === 0) {
+                console.log(userInfo, req.params)
+                return res.status(404).json("User does not exist !");
+            }
+
+            const user = data.rows[0]
+            return res.status(200).json({user})
+        })
+    })
+}
+
 export const logout = (req,res)=>{
     res.clearCookie("access_token",{
         sameSite:"none",

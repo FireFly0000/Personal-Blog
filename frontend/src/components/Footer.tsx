@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
   return (
     <footer>
-      <Link to='/home'>
+      <Link to='/'>
         <img className="logo"src={logo}/>
       </Link>
       <span><b>Thank You For Visiting My Blog And Leave A Beautiful Memory Here </b></span>

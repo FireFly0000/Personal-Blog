@@ -27,7 +27,7 @@ const getAllPosts = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 });
 exports.getAllPosts = getAllPosts;
 const getPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const query = "SELECT username, title, descr, p.img, p.id, u.img AS userImg, cat, date FROM users u JOIN posts p ON u.id = p.uid WHERE p.id = $1";
+    const query = "SELECT username, uid, title, descr, p.img, p.id, u.img AS userImg, cat, date FROM users u JOIN posts p ON u.id = p.uid WHERE p.id = $1";
     yield db_1.db.query(query, [req.params.id], (err, data) => {
         if (err)
             return res.status(500).json(err);

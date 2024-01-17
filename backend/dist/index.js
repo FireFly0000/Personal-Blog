@@ -50,17 +50,12 @@ const storage = (0, multer_storage_cloudinary_1.default)({
     }
 });
 const upload = (0, multer_1.default)({ storage });
-//======================================================
 app.post('/api/upload', upload.any(), (req, res) => {
     res.json(req.files[0].path);
-    /*cloudinary.uploader.upload( `${req['filename']}`, function(err, data){
-        if(err){
-            res.status(400).json(err)
-        }
-        res.status(200).json(data)
-    })*/
 });
-//====================================================
+app.post('/api/deleteImg', upload.fields([]), (req, res) => {
+    res.json(cloudinary_1.v2.api.delete_resources([`upload/${req.body.img_name}`], { type: 'upload', resource_type: 'image' }));
+});
 app.use("/api/auth", auth_1.default);
 app.use("/api/users", users_1.default);
 app.use("/api/posts", posts_1.default);

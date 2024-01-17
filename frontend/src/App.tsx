@@ -1,10 +1,11 @@
-import { createBrowserRouter, RouterProvider, Outlet, Router } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import './style.css'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Write from './pages/Write'
 import Single from './pages/Single'
+import Profile from './pages/Profile'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import axios from 'axios'
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
     element: <Layout/>,
     children: [
       {
-        path:"/home",
+        path:"/",
         element: <Home/>
       },
       {
@@ -36,6 +37,14 @@ const router = createBrowserRouter([
         path:"/post/:id",
         element: <Single/>
       },
+      {
+        path:"/profile/:id/:username",
+        element: <Profile/>
+      },      
+      {
+        path:"/myProfile",
+        element: <Profile/>
+      },
     ]
   },
   {
@@ -43,7 +52,7 @@ const router = createBrowserRouter([
     element: <Register/>
   },
   {
-    path: "/",
+    path: "/login",
     element: <Login/>
   },
 ]);
@@ -51,7 +60,7 @@ const router = createBrowserRouter([
 function App() {
 
   return (
-        <RouterProvider router={router} />
+        <RouterProvider router={router} key={window.location.search} />
   )
 }
 

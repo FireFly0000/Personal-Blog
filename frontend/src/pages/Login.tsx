@@ -24,7 +24,7 @@ const Login = () => {
     e.preventDefault()
     try{
       await login(inputs)
-      navigate("/home")
+      navigate("/")
     }
     catch(err: any){
       console.log(err)
@@ -34,7 +34,7 @@ const Login = () => {
 
   return (
     <div className="auth-page-container">
-      <div className='auth-page auth-item'>
+      <div className='auth-page'>
         <img className='logo' src={logo}/>
         <div className='auth-container'>
           <h1 className='auth-title'>Login</h1>
@@ -47,7 +47,7 @@ const Login = () => {
             </form>
         </div>
       </div>
-        <ImageSlider slides={SliderData}/>  
+      <ImageSlider slides={SliderData}/>  
     </div>  
   )
 }

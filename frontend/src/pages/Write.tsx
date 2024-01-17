@@ -5,6 +5,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
+import ImgUploader from '../components/ImgUploader';
 
 interface Inputs{
   cat: string
@@ -15,29 +16,10 @@ const Write = () => {
   const navigate = useNavigate()
   const state = useLocation().state;
   const [title, setTitle] = useState(state?.title || "");
-  const [descr, setDescr] = useState(state?.descr || <></>);
+  const [descr, setDescr] = useState(state?.descr || "");
   const [imgFile, setImgFile] = useState<File | undefined>(undefined);
   const [cat, setCat] = useState(state?.cat || "");
   const {access_token} = useAuth()
-
-  const uploadImg = async () =>{
-    try{
-      const formData = new FormData();
-      if(imgFile === undefined) return
-      formData.append("file", imgFile)
-      const options = {
-        method: 'POST',
-        data: formData,
-        url: "https://personal-blog-backend-deploy.vercel.app/api/upload"
-      };
-      const res = await axios(options);
-      console.log(res)
-      return res.data
-
-    }catch(err){
-      console.log(err)
-    }
-  }
 
   const ChangeImage = (e: React.FormEvent<HTMLInputElement>) =>{
     const target = e.target as HTMLInputElement & {
@@ -49,8 +31,7 @@ const Write = () => {
 
   const handleSubmit = async (e: React.MouseEvent) =>{
     e.preventDefault()
-    const imgURL = await uploadImg()
-
+    const imgURL = await ImgUploader(imgFile)
     try{
       state ? await axios.put(`/posts/${state.id}`, {
         title,
@@ -68,7 +49,7 @@ const Write = () => {
         access_token: access_token,
         date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
       }, {withCredentials: true});
-      navigate("/home")
+      navigate("/")
     }catch(err){
       console.log(err)
     }

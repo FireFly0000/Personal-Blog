@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import {Link, useLocation, useNavigate} from 'react-router-dom'
-import im from '../assets/uploads/1691478225356Aokiji.jpg'
 
 interface Post{
   id: number
