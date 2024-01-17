@@ -20,7 +20,7 @@ Register to see the app or use the below test account:
   <li>React context (useContext) to manage current user as a global state</li>
   <li>Used Multer to upload images to local folder</li>
   <li>Use multer-storage-cloudinary to store images in Cloudinary upon deployment</li>
-  <li>Create a modal to crop allow user crop images and update profile picture using react-image-crop</li>
+  <li>Create a modal to allow users crop images and update profile picture using react-image-crop</li>
 </ul>
 
 <h1>Main features :</h1>
